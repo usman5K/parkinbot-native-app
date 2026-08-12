@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>08 · Parked · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="toast">Parking spot saved locally</div>
+
+          <div class="topbar" style="margin-top: 28px">
+            <div>
+              <div class="brand" style="font-size: 22px">Parkin</div>
+              <div class="offline-pill" style="margin-top: 4px"><i></i> Active spot</div>
+            </div>
+            <a class="icon-btn" href="14-settings.html" aria-label="Settings">⚙</a>
+          </div>
+
+          <div class="map-stage">
+            <div class="map-roads"></div>
+            <div class="map-pin"></div>
+            <div class="user-dot" style="left: 38%; top: 68%"></div>
+          </div>
+
+          <div class="panel-3d" style="margin-bottom: 12px">
+            <div class="label">Current parking</div>
+            <div class="meta-title" style="font-size: 17px; margin-top: 6px">Dolmen Mall · Clifton</div>
+            <div class="meta-sub">Block C · Pillar 12 · Bike</div>
+            <div class="stat-row" style="margin-top: 14px">
+              <div class="stat">
+                <div class="caption">Parked</div>
+                <strong>2:22 PM</strong>
+              </div>
+              <div class="stat">
+                <div class="caption">Duration</div>
+                <strong id="dur">1h 18m</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn btn-primary btn-block" href="09-navigate.html">Find my vehicle</a>
+            <a class="btn btn-ghost btn-block" href="10-leave-reminder.html">Simulate leave reminder</a>
+          </div>
+
+          <nav class="bottom-nav">
+            <a class="active" href="08-parked.html"><span>○</span>Map</a>
+            <a href="12-history.html"><span>☰</span>History</a>
+            <a href="14-settings.html"><span>⚙</span>Prefs</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>

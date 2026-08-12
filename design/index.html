@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parkin · Design Flow</title>
+    <link rel="stylesheet" href="css/shared.css" />
+    <style>
+      body {
+        display: block;
+        padding: 48px 24px 80px;
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      .hero {
+        margin-bottom: 36px;
+      }
+      .hero .brand {
+        font-size: clamp(48px, 10vw, 72px);
+        margin-bottom: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+      }
+      .grid a {
+        text-decoration: none;
+        color: inherit;
+        padding: 18px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 16px 32px rgba(11, 18, 32, 0.08);
+        transform: perspective(600px) rotateX(4deg);
+        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+        display: block;
+      }
+      .grid a:hover {
+        transform: perspective(600px) rotateX(0) translateY(-4px);
+        box-shadow: 0 24px 40px rgba(11, 18, 32, 0.14);
+      }
+      .grid .n {
+        font-family: Syne, sans-serif;
+        font-weight: 800;
+        font-size: 22px;
+        color: #00a88a;
+        letter-spacing: -0.03em;
+      }
+      .grid .t {
+        font-weight: 700;
+        margin-top: 6px;
+      }
+      .grid .d {
+        font-size: 12px;
+        color: #7a8699;
+        margin-top: 4px;
+        line-height: 1.4;
+      }
+      .start {
+        margin-top: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="hero">
+        <div class="brand">Parkin</div>
+        <p class="lead" style="max-width: 520px">
+          Offline-first parking companion — pin, photo, walk back, leave reminder.
+          Clickable HTML prototype. One screen per file. Follow the sequence.
+        </p>
+        <div class="start">
+          <a class="btn btn-primary" href="01-splash.html">Start end-to-end flow →</a>
+        </div>
+      </div>
+      <div class="label" style="margin-bottom: 12px">All screens</div>
+      <div class="grid" id="grid"></div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+      const copy = {
+        "01-splash.html": "Brand moment",
+        "02-welcome.html": "Promise + CTA",
+        "03-permissions.html": "Location trust",
+        "04-map-download.html": "Offline map pack",
+        "05-home.html": "Ready to park",
+        "06-park-confirm.html": "GPS or pin",
+        "07-photo.html": "Optional capture",
+        "08-parked.html": "Active spot",
+        "09-navigate.html": "Walk / bike / car",
+        "10-leave-reminder.html": "Geofence ask",
+        "11-cleared.html": "Spot removed",
+        "12-history.html": "Past sessions",
+        "13-history-detail.html": "Session detail",
+        "14-settings.html": "Preferences",
+      };
+      const grid = document.getElementById("grid");
+      Parkin.FLOW.forEach((s, i) => {
+        const a = document.createElement("a");
+        a.href = s.file;
+        a.innerHTML = `<div class="n">${String(i + 1).padStart(2, "0")}</div><div class="t">${s.label}</div><div class="d">${copy[s.file] || ""}</div>`;
+        grid.appendChild(a);
+      });
+    </script>
+  </body>
+</html>

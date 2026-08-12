@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>06 · Park Confirm · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="topbar">
+            <a class="icon-btn" href="05-home.html" aria-label="Back">←</a>
+            <div class="title">Confirm spot</div>
+            <span style="width: 44px"></span>
+          </div>
+
+          <div class="map-stage" id="map">
+            <div class="map-roads"></div>
+            <div class="map-pin" id="pin" style="left: 52%; top: 44%; cursor: grab"></div>
+            <div class="user-dot" style="left: 52%; top: 44%; opacity: 0.35"></div>
+          </div>
+
+          <div class="panel-3d stack" style="margin-bottom: 14px">
+            <div>
+              <div class="label">Coordinates</div>
+              <div class="meta-title" data-coords style="margin-top: 4px; font-variant-numeric: tabular-nums">—</div>
+            </div>
+            <div class="btn-row two">
+              <button class="btn btn-ghost" type="button" id="use-gps">Use GPS</button>
+              <button class="btn btn-ghost" type="button" id="nudge">Adjust pin</button>
+            </div>
+            <p class="caption">Drag the pin or tap Adjust to fine-tune on the map.</p>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn btn-primary btn-block" href="07-photo.html">Save & add photo</a>
+            <a class="btn btn-ink btn-block" href="08-parked.html">Save without photo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+      const pin = document.getElementById("pin");
+      const map = document.getElementById("map");
+      let ox = 52;
+      let oy = 44;
+
+      document.getElementById("use-gps").addEventListener("click", () => {
+        ox = 52;
+        oy = 44;
+        pin.style.left = ox + "%";
+        pin.style.top = oy + "%";
+        const t = document.createElement("div");
+        t.className = "toast";
+        t.textContent = "GPS lock · current location";
+        document.querySelector(".phone").appendChild(t);
+        setTimeout(() => t.remove(), 1600);
+      });
+
+      document.getElementById("nudge").addEventListener("click", () => {
+        ox = Math.min(78, ox + 6);
+        oy = Math.max(28, oy - 4);
+        pin.style.left = ox + "%";
+        pin.style.top = oy + "%";
+        document.querySelector("[data-coords]").textContent =
+          (Parkin.MOCK.spot.lat + (oy - 44) * 0.00008).toFixed(5) +
+          "°, " +
+          (Parkin.MOCK.spot.lng + (ox - 52) * 0.00008).toFixed(5) +
+          "°";
+      });
+
+      let dragging = false;
+      pin.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        pin.setPointerCapture(e.pointerId);
+      });
+      pin.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const r = map.getBoundingClientRect();
+        ox = ((e.clientX - r.left) / r.width) * 100;
+        oy = ((e.clientY - r.top) / r.height) * 100;
+        ox = Math.max(8, Math.min(92, ox));
+        oy = Math.max(12, Math.min(88, oy));
+        pin.style.left = ox + "%";
+        pin.style.top = oy + "%";
+      });
+      pin.addEventListener("pointerup", () => {
+        dragging = false;
+      });
+    </script>
+  </body>
+</html>

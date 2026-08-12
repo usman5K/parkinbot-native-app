@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>14 · Settings · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="topbar">
+            <div>
+              <div class="brand" style="font-size: 22px">Prefs</div>
+              <div class="caption" style="margin-top: 4px">Local preferences</div>
+            </div>
+            <a class="icon-btn" href="08-parked.html" aria-label="Close">✕</a>
+          </div>
+
+          <div class="scroll-y stack" style="padding-bottom: 8px">
+          <div class="panel-3d" style="margin-bottom: 12px">
+            <div class="label">Leave reminder</div>
+            <div class="toggle-row">
+              <div>
+                <div class="meta-title">Ask when I leave</div>
+                <div class="meta-sub">Geofence around parked pin</div>
+              </div>
+              <button class="toggle on" type="button" data-toggle aria-label="Toggle leave ask">
+                <span></span>
+              </button>
+            </div>
+            <div class="slider-wrap">
+              <div style="display: flex; justify-content: space-between">
+                <div class="meta-title">Distance</div>
+                <div class="meta-title" id="dist-val">120 m</div>
+              </div>
+              <input id="dist" type="range" min="40" max="300" step="10" value="120" />
+              <div class="caption">Default 120 m · beyond this, prompt to clear</div>
+            </div>
+          </div>
+
+          <div class="panel-3d" style="margin-bottom: 12px">
+            <div class="label">Navigation</div>
+            <div class="toggle-row">
+              <div>
+                <div class="meta-title">Default mode</div>
+                <div class="meta-sub" id="mode-sub">Walk</div>
+              </div>
+            </div>
+            <div class="segment">
+              <button type="button" class="active" data-mode="walk">Walk</button>
+              <button type="button" data-mode="bike">Bike</button>
+              <button type="button" data-mode="car">Car</button>
+            </div>
+          </div>
+
+          <div class="panel-3d" style="margin-bottom: 12px">
+            <div class="label">Privacy & network</div>
+            <div class="toggle-row">
+              <div>
+                <div class="meta-title">Cloud sync</div>
+                <div class="meta-sub">Disabled by design</div>
+              </div>
+              <span class="caption">Off</span>
+            </div>
+            <div class="toggle-row" style="border: none">
+              <div>
+                <div class="meta-title">Network</div>
+                <div class="meta-sub">Map download / update only</div>
+              </div>
+              <span class="caption">Maps</span>
+            </div>
+          </div>
+
+          <div class="panel-3d">
+            <div class="label">Offline maps</div>
+            <div class="toggle-row" style="border: none">
+              <div>
+                <div class="meta-title">Karachi pack</div>
+                <div class="meta-sub">148 MB · up to date</div>
+              </div>
+              <a class="btn btn-ghost" style="padding: 10px 12px; font-size: 13px" href="04-map-download.html">Update</a>
+            </div>
+          </div>
+          </div>
+
+          <nav class="bottom-nav">
+            <a href="05-home.html"><span>○</span>Map</a>
+            <a href="12-history.html"><span>☰</span>History</a>
+            <a class="active" href="14-settings.html"><span>⚙</span>Prefs</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+      const dist = document.getElementById("dist");
+      const distVal = document.getElementById("dist-val");
+      dist.addEventListener("input", () => {
+        distVal.textContent = dist.value + " m";
+      });
+      document.querySelectorAll(".segment button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const labels = { walk: "Walk", bike: "Bike", car: "Car" };
+          document.getElementById("mode-sub").textContent = labels[btn.dataset.mode] || "";
+        });
+      });
+    </script>
+  </body>
+</html>

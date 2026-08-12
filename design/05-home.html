@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>05 · Home · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="topbar">
+            <div>
+              <div class="brand" style="font-size: 22px">Parkin</div>
+              <div class="offline-pill" style="margin-top: 4px"><i></i> Offline maps on</div>
+            </div>
+            <a class="icon-btn" href="14-settings.html" aria-label="Settings">⚙</a>
+          </div>
+
+          <div class="map-stage">
+            <div class="map-roads"></div>
+            <div class="user-dot" style="left: 50%; top: 50%"></div>
+            <div style="position: absolute; left: 16px; top: 16px; z-index: 4">
+              <span class="badge">No active spot</span>
+            </div>
+          </div>
+
+          <div class="panel-3d" style="margin-bottom: 14px">
+            <div class="label">Ready</div>
+            <div class="meta-title" style="margin-top: 6px; font-size: 16px">Mark where you parked</div>
+            <div class="meta-sub">GPS now, or drop a pin on the map</div>
+          </div>
+
+          <a class="btn btn-primary btn-block" href="06-park-confirm.html">Park here</a>
+
+          <nav class="bottom-nav">
+            <a class="active" href="05-home.html"><span>○</span>Map</a>
+            <a href="12-history.html"><span>☰</span>History</a>
+            <a href="14-settings.html"><span>⚙</span>Prefs</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>

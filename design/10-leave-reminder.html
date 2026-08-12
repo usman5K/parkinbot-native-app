@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>10 · Leave Reminder · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen" style="padding-bottom: 0">
+          <div class="topbar">
+            <div class="brand" style="font-size: 20px">Parkin</div>
+            <span class="offline-pill"><i></i> Geofence</span>
+          </div>
+
+          <div class="map-stage" style="opacity: 0.85">
+            <div class="map-roads"></div>
+            <div class="map-pin" style="opacity: 0.5"></div>
+            <div class="user-dot" style="left: 72%; top: 28%"></div>
+            <div
+              style="
+                position: absolute;
+                left: 52%;
+                top: 44%;
+                width: 140px;
+                height: 140px;
+                margin: -70px 0 0 -70px;
+                border-radius: 50%;
+                border: 2px dashed rgba(0, 168, 138, 0.55);
+                background: rgba(0, 168, 138, 0.08);
+                z-index: 1;
+                animation: pinPulse 3s ease-in-out infinite;
+              "
+            ></div>
+          </div>
+
+          <div class="sheet">
+            <span class="badge">120 m away</span>
+            <h2 class="h2" style="margin: 12px 0 8px">Picked up your vehicle?</h2>
+            <p class="lead">
+              You moved beyond your leave distance. Remove the parking mark, or keep it if you’re still parked.
+            </p>
+            <div class="btn-row" style="margin-top: 18px">
+              <a class="btn btn-primary btn-block" href="11-cleared.html">Yes · clear spot</a>
+              <a class="btn btn-ghost btn-block" href="08-parked.html">Still parked · keep</a>
+            </div>
+            <p class="caption" style="margin-top: 12px; text-align: center">
+              Change distance anytime in Prefs
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>07 · Photo · Parkin</title>
+    <link rel="stylesheet" href="css/shared.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="topbar">
+            <a class="icon-btn" href="06-park-confirm.html" aria-label="Back">←</a>
+            <div class="title">Optional photo</div>
+            <a class="caption" href="08-parked.html" style="text-decoration: none; color: var(--muted)">Skip</a>
+          </div>
+
+          <p class="lead" style="margin-bottom: 12px">
+            Capture pillar, level, or bay. Compressed with time & coordinates into your Parkin album.
+          </p>
+
+          <div class="camera-view" id="cam">
+            <div class="frame-guide"></div>
+            <div class="exif">
+              <div data-coords>coords</div>
+              <div style="margin-top: 4px">13 Aug 2026 · 14:22 · JPEG · ~180 KB</div>
+            </div>
+          </div>
+
+          <button class="shutter" id="shutter" type="button" aria-label="Capture">
+            <i></i>
+          </button>
+          <p class="caption" style="text-align: center; margin-top: 12px" id="shot-status">
+            Tap to capture mock photo
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+      const shutter = document.getElementById("shutter");
+      const cam = document.getElementById("cam");
+      const status = document.getElementById("shot-status");
+      shutter.addEventListener("click", () => {
+        cam.classList.remove("flash");
+        void cam.offsetWidth;
+        cam.classList.add("flash");
+        status.textContent = "Saved · Parkin / 2026-08-13_1422.jpg";
+        setTimeout(() => Parkin.go("08-parked.html"), 900);
+      });
+    </script>
+  </body>
+</html>
